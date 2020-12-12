@@ -62,6 +62,12 @@ public class PlayerController : MonoBehaviour
         {
             cam.transform.Rotate(new Vector3 (-_xRot, 0.0f, 0.0f));
         }
+
+        // Restart the game after falling off the map
+        if (rb.position.y < -5f)
+        {
+            FindObjectOfType<GameManager>().EndGame();
+        }
     }
 
     void OnCollisionEnter(Collision collision)
